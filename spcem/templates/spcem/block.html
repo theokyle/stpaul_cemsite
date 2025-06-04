@@ -1,28 +1,19 @@
 {% extends 'header.html' %}
 
+{% load static %}
+
 {% block content %}
-<table>
-    <thead>
-        <tr>
-            <th>Block</th>
-            <th>Lot</th>
-            <th>Plot</th>
-            <th>Status</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-        </tr>
-    </thead>
-    {% for grave in object_list %}
-    <tr>
-        <td>{{ grave.block }}</td>
-        <td>{{  grave.lot }}</td>
-        <td>{{  grave.plot }}</td>
-        <td>{{  grave.status }}</td>
+<h1>Block {{ block_number }}</h1>
+    {% for grave in grave_list %}
+    <button class="{{ grave.status }}">
+        <h3>{{  grave.status }}</h3>
+        <p>{{  grave.lot }}</p>
+        <p>{{  grave.plot }}</p>
         {% for deceased in grave.deceased_set.all %}
-            <td>{{ deceased.first_name }}</td>
-            <td>{{ deceased.last_name }}</td>
+            <p>{{ deceased.first_name }}</p>
+            <p>{{ deceased.last_name }}</p>
         {% endfor %}
-    </tr>
-    {% endfor %}
+    </button>
+{% endfor %}
 </table>
 {% endblock %}
