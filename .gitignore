@@ -1,2 +1,5 @@
 venv/
 stpaul_cemsite/__pycache__/
+spcem/__pycache__/
+spcem/migrations
+upload.py

@@ -13,11 +13,11 @@ class Owner (models.Model):
 
 class Grave (models.Model):
     class Status (models.TextChoices):
-        AVAILABLE = "A", _("Available")
-        RESERVED = "R", _("Reserved")
-        OCCUPIED = "O", _("Occupied")
+        AVAILABLE = "Available", _("Available")
+        RESERVED = "Reserved", _("Reserved")
+        OCCUPIED = "Occupied", _("Occupied")
 
-    status = models.CharField(max_length=1, choices=Status, default=Status.AVAILABLE)
+    status = models.CharField(max_length=25, choices=Status, default=Status.AVAILABLE)
     block = models.IntegerField()
     lot = models.IntegerField()
     plot = models.IntegerField()

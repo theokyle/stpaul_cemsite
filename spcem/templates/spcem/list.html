@@ -1,0 +1,28 @@
+{% extends 'header.html' %}
+
+{% block content %}
+<table>
+    <thead>
+        <tr>
+            <th>Block</th>
+            <th>Lot</th>
+            <th>Plot</th>
+            <th>Status</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+    </thead>
+    {% for grave in object_list %}
+    <tr>
+        <td>{{ grave.block }}</td>
+        <td>{{  grave.lot }}</td>
+        <td>{{  grave.plot }}</td>
+        <td>{{  grave.status }}</td>
+        {% for deceased in grave.deceased_set.all %}
+            <td>{{ deceased.first_name }}</td>
+            <td>{{ deceased.last_name }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
