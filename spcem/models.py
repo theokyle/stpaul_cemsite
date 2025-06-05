@@ -33,5 +33,5 @@ class Deceased (models.Model):
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
     date_of_birth = models.CharField(max_length=25, blank=True, null=True)
-    dete_of_death = models.CharField(max_length=25, blank=True, null=True)
+    date_of_death = models.CharField(max_length=25, blank=True, null=True)
     grave = models.ForeignKey(Grave, on_delete=models.CASCADE)
