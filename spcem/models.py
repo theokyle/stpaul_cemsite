@@ -11,6 +11,13 @@ class Owner (models.Model):
     zip = models.IntegerField(blank=True, null=True)
     phone = models.CharField(max_length=25, blank=True, null=True)
 
+class Block (models.Model):
+    number = models.IntegerField()
+
+class Lot (models.Model):
+    number = models.IntegerField()
+    block = models.ForeignKey(Block, on_delete=models.CASCADE)
+
 class Grave (models.Model):
     class Status (models.TextChoices):
         AVAILABLE = "Available", _("Available")
@@ -18,9 +25,8 @@ class Grave (models.Model):
         OCCUPIED = "Occupied", _("Occupied")
 
     status = models.CharField(max_length=25, choices=Status, default=Status.AVAILABLE)
-    block = models.IntegerField()
-    lot = models.IntegerField()
-    plot = models.IntegerField()
+    number = models.IntegerField()
+    lot = models.ForeignKey(Lot, on_delete=models.CASCADE)
     owner = models.ForeignKey(Owner, blank=True, null=True, on_delete=models.SET_NULL)
 
 class Deceased (models.Model):

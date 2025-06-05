@@ -4,16 +4,20 @@
 
 {% block content %}
 <h1>Block {{ block_number }}</h1>
-    {% for grave in grave_list %}
-    <button class="{{ grave.status }}">
-        <h3>{{  grave.status }}</h3>
-        <p>{{  grave.lot }}</p>
-        <p>{{  grave.plot }}</p>
-        {% for deceased in grave.deceased_set.all %}
-            <p>{{ deceased.first_name }}</p>
-            <p>{{ deceased.last_name }}</p>
+    {% for lot in object_list %}
+    <div>
+        <h2>Lot {{ lot.number }}</h2>
+        {% for grave in lot.grave_set.all %}
+        <button class="{{ grave.status }}">
+            <h3>{{  grave.status }}</h3>
+            <p>{{  grave.numbwe }}</p>
+            {% for deceased in grave.deceased_set.all %}
+                <p>{{ deceased.first_name }}</p>
+                <p>{{ deceased.last_name }}</p>
+            {% endfor %}
+        </button>
         {% endfor %}
-    </button>
+    </div>
 {% endfor %}
 </table>
 {% endblock %}
